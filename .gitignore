@@ -1,0 +1,8 @@
+out/
+dl/
+llama/
+vendor-libs/
+*.log
+*.bak
+.DS_Store
+Thumbs.db

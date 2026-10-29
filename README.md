@@ -4,10 +4,6 @@
 
 App 把 `llama-server` 包进一个很小的原生壳里，外面加了 Material 3 的仪表盘与调参界面；聊天和历史直接复用 llama.cpp 自带的 Web UI。
 
-| 对话 | 历史 |
-|---|---|
-| ![对话](docs/chat.png) | ![历史](docs/history.png) |
-
 ## 功能
 
 - **三种后端**：CPU、Adreno OpenCL、Hexagon HTP（内置 v73/v75/v79/v81/v85 的 skel）。

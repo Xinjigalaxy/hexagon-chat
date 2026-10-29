@@ -276,13 +276,11 @@ public class MainActivity extends Activity {
         appTitle.setTextSize(22);
         appTitle.setTypeface(Typeface.DEFAULT_BOLD);
         appTitle.setTextColor(M3.onSurface);
-        titleRow.addView(appTitle, new LinearLayout.LayoutParams(0,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        titleRow.addView(appTitle, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         Button bNew = M3.button(this, "新对话", M3.TONAL);
         Button bModel = M3.button(this, "模型", M3.TONAL);
-        addTopAction(titleRow, bNew);
-        addTopAction(titleRow, bModel);
 
         LinearLayout seg = new LinearLayout(this);
         seg.setOrientation(LinearLayout.HORIZONTAL);
@@ -295,7 +293,6 @@ public class MainActivity extends Activity {
         LinearLayout.LayoutParams segLp = new LinearLayout.LayoutParams(dp(150), dp(42));
         segLp.setMargins(dp(6), 0, dp(4), 0);
         seg.setLayoutParams(segLp);
-        titleRow.addView(seg);
 
         bNew.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,11 +327,21 @@ public class MainActivity extends Activity {
         status = new TextView(this);
         status.setTextSize(12);
         status.setTextColor(M3.onSurfaceVariant);
-        status.setPadding(0, dp(6), dp(12), 0);
+        status.setSingleLine(true);
+        status.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        status.setPadding(0, dp(2), 0, dp(6));
         status.setText("未启动 · 请选择 GGUF 模型");
+
+        LinearLayout actionRow = new LinearLayout(this);
+        actionRow.setOrientation(LinearLayout.HORIZONTAL);
+        actionRow.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
+        addTopAction(actionRow, bNew);
+        addTopAction(actionRow, bModel);
+        actionRow.addView(seg);
 
         top.addView(titleRow);
         top.addView(status);
+        top.addView(actionRow);
         root.addView(top);
 
         web = new WebView(this);
